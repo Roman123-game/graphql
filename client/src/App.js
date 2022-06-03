@@ -2,11 +2,16 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import './App.css';
 import { CREATE_USER } from './mutation/user.js';
-import { GET_ALL_USERS, GET_ONE_USER} from "./query/user.js"
+import { GET_ALL_USERS, GET_ONE_USER } from "./query/user.js"
 
 function App() {
-  const { data, loading, error,refetch } = useQuery(GET_ALL_USERS)
-  const { data:oneUser, loading: loadingOneUser,} = useQuery(GET_ONE_USER)
+  const { data, loading, error, refetch } = useQuery(GET_ALL_USERS)
+  const { data: oneUser, loading: loadingOneUser, } = useQuery(GET_ONE_USER, {
+    variables: {
+      id: 1
+
+    }
+  })
   const [users, setUsers] = useState([]);
   const [username, setUsername] = useState('');
   const [age, setAge] = useState(0);
@@ -35,18 +40,18 @@ function App() {
       setAge(0);
     })
   }
-const getAll = e =>{
-  e.preventDefault();
-  refetch();
-}
+  const getAll = e => {
+    e.preventDefault();
+    refetch();
+  }
   return (
     <div className="App">
       <form>
         <input value={username} onChange={e => setUsername(e.target.value)} type="text"></input>
         <input value={age} onChange={e => setAge(e.target.value)} type="number"></input>
         <div >
-          <button onClick={(e)=>addUser(e)} className='button'> create</button>
-          <button onClick={(e)=>getAll(e)} className='button'> Recieve</button>
+          <button onClick={(e) => addUser(e)} className='button'> create</button>
+          <button onClick={(e) => getAll(e)} className='button'> Recieve</button>
         </div>
       </form>
       <div>
