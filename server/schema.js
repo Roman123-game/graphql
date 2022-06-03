@@ -24,7 +24,10 @@ input PostInput{
     content: String!
 }
 
-type Query
+type Query{
+    getAllUsers: [User]
+    getUser : (id:ID) :user
+}
 `);
 
 module.exports = schema;
