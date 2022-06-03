@@ -30,7 +30,7 @@ type Query{
 }
 
 type Mutation{
-    createUser(input: UserInput)
+    createUser(input: userInput):User
 }
 `);
 
