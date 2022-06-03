@@ -4,7 +4,7 @@ const schema = buildSchema(`
    type  User{
        id:ID
        username: String
-       ade:Int
+       age:Int
         posts:[Post]
      },
 type Post{
@@ -26,7 +26,11 @@ input PostInput{
 
 type Query{
     getAllUsers: [User]
-    getUser : (id:ID) :user
+    getUser(id:ID) :User
+}
+
+type Mutation{
+    createUser(input: UserInput)
 }
 `);
 
