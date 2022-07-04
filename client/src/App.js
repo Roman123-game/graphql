@@ -40,7 +40,6 @@ const App = () => {
     }
     const getAll = e => {
         e.preventDefault()
-        refetch()
     }
 
     if (loading) {
@@ -54,7 +53,7 @@ const App = () => {
                 <input value={age} onChange={e => setAge(e.target.value)} type="number"/>
                 <div className="btns">
                     <button className="butons"onClick={(e) => addUser(e)}>Создать</button>
-                    <button className="butons"onClick={e => getAll(e)}>Получить</button>
+                    <button className="butons"onClick={(e) => getAll(e)}>Получить</button>
                 </div>
             </form>
             <div>
